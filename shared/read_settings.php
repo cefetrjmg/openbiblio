@@ -55,6 +55,7 @@
    * general settings constants
    ****************************************************************************
    */
+  date_default_timezone_set(getenv("TIMEZONE"));
   define("OBIB_LIBRARY_NAME",$set->getLibraryName());
   define("OBIB_LIBRARY_HOURS",$set->getLibraryHours());
   define("OBIB_LIBRARY_PHONE",$set->getLibraryPhone());
