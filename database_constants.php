@@ -7,10 +7,10 @@
  *  \/  a instalar o OpenbiblioBR. Crie o banco de dados e um usuário para isso \/
  *********************************************************************************
  */
-define("OBIB_HOST",     "localhost");
-define("OBIB_DATABASE", "");
-define("OBIB_USERNAME", "");
-define("OBIB_PWD",      "");
+define("OBIB_HOST",     getenv("OBIB_HOST"));
+define("OBIB_DATABASE", getenv("OBIB_DATABASE"));
+define("OBIB_USERNAME", getenv("OBIB_USERNAME"));
+define("OBIB_PWD",      getenv("OBIB_PWD"));
 /*********************************************************************************
  *  /\                                                                      /\
  *  ||                                                                      ||

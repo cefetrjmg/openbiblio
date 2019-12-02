@@ -1,20 +1,25 @@
 version: '2.4'
 services:
-    php7-fpm:
-        hostname: php7-fpm
-        build: .
-        container_name: php7-fpm
+    php5.6-fpm:
+        hostname: php5.6-fpm
+        build: php-fpm/
+        container_name: php5.6-fpm
         expose:
           - "9000"
         depends_on: 
-          - mysql
-          
+          - mysql5.6
         volumes:
             - .:/var/www/html/openbiblio
+        environment: 
+          - OBIB_HOST=mysql5.6
+          - OBIB_DATABASE=openbiblio
+          - OBIB_USERNAME=openbiblio
+          - OBIB_PWD=openbiblio
       
-    mysql:
-        hostname: mysql
-        image: mysql
+    mysql5.6:
+        container_name: mysql5.6
+        hostname: mysql5.6
+        image: mysql:5.6
         volumes:
           - mysql-data:/var/lib/mysql
         environment: 
@@ -22,9 +27,6 @@ services:
           - MYSQL_USER=openbiblio
           - MYSQL_PASSWORD=openbiblio
           - MYSQL_ROOT_PASSWORD=root
-          
-          
-          
         ports:
           - 3307:3306
     phpmyadmin:
@@ -32,7 +34,7 @@ services:
         container_name: phpmyadmin
         hostname: phpmyadmin
         depends_on: 
-          - mysql
+          - mysql5.6
         ports:
           - 82:80
         environment: 
@@ -45,11 +47,11 @@ services:
       hostname: nginx
       volumes:
             - .:/var/www/html/openbiblio
-            - ./openbiblio.dev.conf:/etc/nginx/conf.d/default.conf
+            - ./nginx/openbiblio.dev.conf:/etc/nginx/conf.d/default.conf
       ports:
         - 81:80
       depends_on: 
-        - php7-fpm
+        - php5.6-fpm
       
 volumes:
   mysql-data:
