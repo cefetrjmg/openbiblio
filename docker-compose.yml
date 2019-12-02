@@ -1,9 +1,9 @@
 version: '2.4'
 services:
-    php5.6-fpm:
-        hostname: php5.6-fpm
+    php5.5-fpm:
+        hostname: php5.5-fpm
         build: php-fpm/
-        container_name: php5.6-fpm
+        container_name: php5.5-fpm
         expose:
           - "9000"
         depends_on: 
@@ -51,7 +51,7 @@ services:
       ports:
         - 81:80
       depends_on: 
-        - php5.6-fpm
+        - php5.5-fpm
       
 volumes:
   mysql-data:
