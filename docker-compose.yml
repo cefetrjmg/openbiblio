@@ -15,6 +15,7 @@ services:
           - OBIB_DATABASE=openbiblio
           - OBIB_USERNAME=openbiblio
           - OBIB_PWD=openbiblio
+          - TIMEZONE=America/Sao_Paulo
       
     mysql5.6:
         container_name: mysql5.6
